@@ -1,4 +1,6 @@
-{
+const Env = require('node-env-file');
+
+module.exports = {
   "development": {
     "username": "labber",
     "password": "labber",

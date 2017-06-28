@@ -45,7 +45,6 @@
     "express": "^4.15.3",
     "express-session": "^1.15.3",
     "node-craigslist": "^1.1.2",
-    "node-env-file": "^0.1.8",
     "passport": "^0.3.2",
     "passport-facebook": "^2.1.1",
     "passport-google-oauth": "^1.0.0",

@@ -11,6 +11,8 @@ var db        = {};
 if (env === "production") {
   var sequelize = new Sequelize(process.env.DATABASE_URL, {
     dialect:  'postgres',
+    protocol: 'postgres',
+    logging:  true,
     dialectOptions: {
         ssl: true
     }

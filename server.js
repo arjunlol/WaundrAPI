@@ -3,7 +3,6 @@ const cors = require('cors')
 const app = express();
 const uuidv4 = require('uuid/v4');
 
-const morgan = require('morgan')
 require("dotenv").config()
 
 const redis = require('redis');
@@ -24,7 +23,6 @@ let events = [];
 //keeps track of ws clients id to user id
 let clientToUserId = {};
 
-app.use(morgan('dev'));
 const PORT = process.env.PORT|| 3001;
 // //MVP hardcode city
 // let craigClient = new craigslist.Client({

@@ -10,7 +10,10 @@ var db        = {};
 
 if (env === "production") {
   var sequelize = new Sequelize(process.env.DATABASE_URL, {
-    dialect:  'postgres'
+    dialect:  'postgres',
+    dialectOptions: {
+        ssl: true
+    }
   })
 } else {
   var sequelize = new Sequelize(config.database, config.username, config.password, config);

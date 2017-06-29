@@ -13,7 +13,7 @@ const cors = require('cors');
 
 
 const corsOptions = {
-  origin: 'http://localhost:3000',
+  origin: 'https://waundr.github.io',
   optionSuccessStatus: 200,
   credentials: true
 }
@@ -35,7 +35,7 @@ const FacebookStrategy = require('passport-facebook').Strategy;
 passport.use(new GoogleStrategy({
     clientID: process.env.CLIENTID,
     clientSecret: process.env.CLIENTSECRET,
-    callbackURL: "http://localhost:3001/users/auth/google/callback"
+    callbackURL: "https://cryptic-plains-45907.herokuapp.com/users/auth/google/callback"
   },
   function(accessToken, refreshToken, profile, done) {
        usersController.findOrCreate({firstName:profile._json.name.givenName, lastName:profile._json.name.familyName, image:profile._json.image.url, passportId:profile.id}).then((user) => {
@@ -53,7 +53,7 @@ passport.use(new GoogleStrategy({
 passport.use(new FacebookStrategy({
     clientID: process.env.APPID,
     clientSecret: process.env.APPSECRET,
-    callbackURL: "http://localhost:3001/users/auth/facebook/callback",
+    callbackURL: "https://cryptic-plains-45907.herokuapp.com/users/auth/facebook/callback",
     profileFields: ['id', 'displayName', 'picture.type(large)', "name", "email"]
   },
   function(accessToken, refreshToken, profile, done) {
@@ -84,7 +84,7 @@ passport.deserializeUser(function(id, done) {
 
 module.exports = () => {
   // Attempting to show the user information in the localhost 3000
-  router.get('http://localhost:3000', (req, res) => {
+  router.get('https://waundr.github.io', (req, res) => {
 
     // res.send(user[0])
   })
@@ -113,11 +113,11 @@ module.exports = () => {
   //   login page.  Otherwise, the primary route function function will be called,
   //   which, in this example, will redirect the user to the home page.
   router.get('/auth/google/callback',
-    passport.authenticate('google', { successRedirect: "http://localhost:3000",
+    passport.authenticate('google', { successRedirect: "https://waundr.github.io",
                                       failureRedirect: '/login' }),
     function(req, res) {
       req.session.save(function() {
-        res.redirect('http://localhost:3000');
+        res.redirect('https://waundr.github.io');
       })
       // res.redirect('http://localhost:3000');
     });
@@ -134,11 +134,11 @@ module.exports = () => {
   // access was granted, the user will be logged in.  Otherwise,
   // authentication has failed.
   router.get('/auth/facebook/callback',
-    passport.authenticate('facebook', { successRedirect: "http://localhost:3000",
+    passport.authenticate('facebook', { successRedirect: "https://waundr.github.io",
                                         failureRedirect: '/login' }),
           function(req, res) {
             req.session.save(function() {
-              res.redirect('http://localhost:3000');
+              res.redirect('https://waundr.github.io');
             })
             // res.redirect('http://localhost:3000');
           }
@@ -154,7 +154,7 @@ module.exports = () => {
 
   router.get('/logout', function(req, res){
     req.logout();
-    res.redirect("http://localhost:3000");
+    res.redirect("https://waundr.github.io");
 });
 
     //Use quick/dirty estimate that 1m in y is ~0.00001 degre (of latitude) and 1m in x is 0.00001 in x

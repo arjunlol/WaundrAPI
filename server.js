@@ -58,14 +58,16 @@ client.on('connect', function() {
     mu['rejects'] = []
     mu['creator'] = 'meetup'
     //dont want duplicate meetups
-    if (events.indexOf(mu) === -1) {
-      client.hmset(mu.id, mu)
-      events.push(mu)
-      let info = {};
-      info.type = 'update markers';
-      wss.broadcast(info)
-    }
+    for (let value of events) {
+      if(value.title !== mu.title) {
+        client.hmset(mu.id, mu)
+        events.push(mu)
+        let info = {};
+        info.type = 'update markers';
+        wss.broadcast(info)
 
+      }
+    }
   })
 }
 

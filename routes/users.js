@@ -160,17 +160,18 @@ module.exports = () => {
     //Use quick/dirty estimate that 1m in y is ~0.00001 degre (of latitude) and 1m in x is 0.00001 in x
     //find friends within 100m
   router.get('/nearby/:lat/:lng/:id', (req, res) => {
-    let latMin = Number(req.params.lat) -0.0001;
-    let latMax = Number(req.params.lat) +0.0001;
-    let lngMin = Number(req.params.lng) -0.0001;
-    let lngMax = Number(req.params.lng) +0.0001;
+    let latMin = Number(req.params.lat) -0.001;
+    let latMax = Number(req.params.lat) +0.001;
+    let lngMin = Number(req.params.lng) -0.001;
+    let lngMax = Number(req.params.lng) +0.001;
+    console.log('lat long', latMin, latMax, lngMin, lngMax)
     //dont include friends that have already been added
-    usersController.findAlreadyAddedNearby({id:req.params.id}).spread((results, metadata) => {
-      console.log(results)
+    // usersController.findAlreadyAddedNearby({id:req.params.id}).spread((results, metadata) => {
+    //   console.log(results)
       usersController.findUsersNearby({latMin, latMax, lngMin, lngMax, id:req.params.id, befriendedid: results}).then((users) => {
         res.send(users)
       })
-    })
+    // })
 
   });
 

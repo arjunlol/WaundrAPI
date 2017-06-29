@@ -214,6 +214,8 @@ wss.on('connection', (ws) => {
         if(clientToUserId[parsedMsg.frienderid] && clientToUserId[parsedMsg.befriendedid].readyState === WebSocket.OPEN)
           clientToUserId[parsedMsg.frienderid].send(message)
         break;
+      case 'dummy':
+        break;
       default:
         let newMarker = JSON.parse(message);
         newMarker.lat = newMarker.loc.lat;

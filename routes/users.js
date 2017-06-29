@@ -15,8 +15,7 @@ const cors = require('cors');
 const corsOptions = {
   origin: 'https://waundr.github.io',
   optionSuccessStatus: 200,
-  credentials: true,
-  Access-Control-Allow-Origin: 'https://waundr.github.io'
+  credentials: true
 }
 router.use(cors(corsOptions));
 

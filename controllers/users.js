@@ -3,6 +3,14 @@ const friends = require('../models').friends;
 const db = require('../models/index');
 
 module.exports = {
+  updateLocation(req, res) {
+    return users
+      .update({
+        {currentLat: req.lat,
+        currentLng: req.lng},
+        {id: req.id}
+      })
+  },
   findOrCreate(req, res) {
     return users
       .findOrCreate({

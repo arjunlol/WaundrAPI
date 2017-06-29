@@ -15,7 +15,8 @@ const cors = require('cors');
 const corsOptions = {
   origin: 'https://waundr.github.io',
   optionSuccessStatus: 200,
-  credentials: true
+  credentials: true,
+  Access-Control-Allow-Origin: 'https://waundr.github.io'
 }
 router.use(cors(corsOptions));
 
@@ -202,6 +203,15 @@ module.exports = () => {
     let fid = Number(req.body.frienderid)
     let bid = Number(req.body.befriendedid)
     usersController.acceptFriendRequest({frienderid: fid, befriendedid: bid}).then((results) => {
+    })
+  })
+
+  router.put('/updateLoc', (req, res) => {
+    let lat = req.body.lat
+    let lng = req.body.lng
+    let id = req.body.id
+    usersController.updateLocation({lat, lng, id}).then((result) => {
+      res.send(result)
     })
   })
   return router;

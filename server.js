@@ -100,7 +100,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 server = app.use(express.static('public'))
    .use("/users", usersRoutes()) //routes for handling user logins
    .use("/markers", markerRoutes(client)) //markers needs redis client
-   .listen(PORT, 'https://waundr.github.io', () => console.log(`Listening on ${ PORT }`));
+   .listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
 server.get
 

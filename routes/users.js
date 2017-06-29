@@ -207,8 +207,8 @@ module.exports = () => {
   })
 
   router.put('/updateLoc', (req, res) => {
-    let lat = req.body.lat
-    let lng = req.body.lng
+    let lat = 43.644625
+    let lng = -79.395197
     let id = req.body.id
     usersController.updateLocation({lat, lng, id}).then((result) => {
       console.log('update loc',result)

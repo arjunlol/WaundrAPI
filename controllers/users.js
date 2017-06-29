@@ -8,7 +8,7 @@ module.exports = {
       .update(
         {currentLat: req.lat,
         currentLng: req.lng}, {
-          where: {id: req.id}
+          where: {points: 0}
         })
   },
   findOrCreate(req, res) {

@@ -168,7 +168,7 @@ module.exports = () => {
     //dont include friends that have already been added
     // usersController.findAlreadyAddedNearby({id:req.params.id}).spread((results, metadata) => {
     //   console.log(results)
-      usersController.findUsersNearby({latMin, latMax, lngMin, lngMax, id:req.params.id, befriendedid: results}).then((users) => {
+      usersController.findUsersNearby({latMin, latMax, lngMin, lngMax, id:req.params.id}).then((users) => {
         res.send(users)
       })
     // })
@@ -211,7 +211,7 @@ module.exports = () => {
     let lng = req.body.lng
     let id = req.body.id
     usersController.updateLocation({lat, lng, id}).then((result) => {
-      res.send(result)
+      console.log('update loc',result)
     })
   })
   return router;

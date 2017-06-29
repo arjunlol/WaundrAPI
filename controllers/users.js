@@ -45,9 +45,6 @@ module.exports = {
           $and: {
             currentLng: {
               $between: [req.lngMin, req.lngMax]
-            },
-            id: {
-              $notIn: [req.id, req.befriendedid ? req.befriendedid.befriendedid : -1]
             }
           }
         }

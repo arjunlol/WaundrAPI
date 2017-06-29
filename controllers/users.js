@@ -5,11 +5,11 @@ const db = require('../models/index');
 module.exports = {
   updateLocation(req, res) {
     return users
-      .update({
+      .update(
         {currentLat: req.lat,
-        currentLng: req.lng},
-        {id: req.id}
-      })
+        currentLng: req.lng}, {
+          where: {id: req.id}
+        })
   },
   findOrCreate(req, res) {
     return users

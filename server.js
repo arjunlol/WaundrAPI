@@ -207,10 +207,10 @@ wss.on('connection', (ws) => {
         break;
       case 'sendRequest':
         //if the befriended user is currently logged in, relay friend request information
-          broadcastElse(message)
+          broadcastElse(parsedMsg)
         break;
       case 'acceptRequest':
-          broadcastElse(message)
+          broadcastElse(parsedMsg)
         break;
       case 'dummy':
         break;
